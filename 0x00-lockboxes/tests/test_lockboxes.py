@@ -75,3 +75,27 @@ class TestLockBoxes(unittest.TestCase):
     def test_weirdkey2(self):
         boxes = [[4, 0, 0, 5], [8, 1, 3, 1, 8], [2, 2, 2, 3, 20], [0, 0, 0, 0, 4], [1, 8, 9, 7]]
         self.assertEqual(canUnlockAll(boxes), False)
+
+    def test_weirdkey3(self):
+        boxes = [[4, 0, 0, 5], [8, 1, 3, 1, 8], [2, 2, 2, 3, 20], [0, 0, 2, 0, 4], [1, 8, 9, 7]]
+        self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_nullboxes(self):
+        boxes = [[4, 0, 0, 5], [], [], [0, 0, 2, 0, 4], [1, 8, 9, 7]]
+        self.assertEqual(canUnlockAll(boxes), False)
+
+    def test_big(self):
+        boxes = [[1000, 5, 2], [3, 293], [5000, 1], [0, 0, 2, 0, 4], [1, 8, 9, 7]]
+        self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_repeated(self):
+        boxes = [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4],[0, 1, 2, 3, 4],[0, 1, 2, 3, 4],[0, 1, 2, 3, 4]]
+        self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_bigend(self):
+        boxes = [[4], [],[],[],[0, 1, 2, 3, 4]]
+        self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_emptybox(self):
+        boxes = []
+        self.assertEqual(canUnlockAll(boxes), True)
