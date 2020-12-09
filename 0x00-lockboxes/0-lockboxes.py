@@ -14,12 +14,11 @@ def canUnlockAll(boxes):
     Returns:
     True if all boxes can be opened, otherwise False
     """
-    register = set()
-    register.add(0)
+    register = [0]
     for box in register:
         for key in boxes[box]:
             if key < len(boxes) and key not in register:
-                register.add(key)
+                register.append(key)
     if len(register) == len(boxes):
         return True
     return False
