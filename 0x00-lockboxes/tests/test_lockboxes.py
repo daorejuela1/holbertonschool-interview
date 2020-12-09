@@ -107,3 +107,11 @@ class TestLockBoxes(unittest.TestCase):
     def test_butone(self):
         boxes = [[1], [2, 3], [], [4], [4]]
         self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_almost(self):
+        boxes = [[1], [2], [4], [4], [1, 2, 4, 5, 7, 3, 8, 9]]
+        self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_almostbad(self):
+        boxes = [[1], [2], [4], [4], [1, 2, 4, 5, 7, 0, 8, 9]]
+        self.assertEqual(canUnlockAll(boxes), False)

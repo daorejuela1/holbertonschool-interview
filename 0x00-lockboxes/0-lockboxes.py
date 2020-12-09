@@ -14,8 +14,6 @@ def canUnlockAll(boxes):
     Returns:
     True if all boxes can be opened, otherwise False
     """
-    if not boxes or len(boxes) == 0:
-        return False
     register = [0 for x in range(len(boxes))]
     boxChecking(boxes, 0, register)
     if all(register):
@@ -35,7 +33,8 @@ def boxChecking(boxes, key, register):
     Returns:
     True if all boxes can be opened, otherwise False
     """
-    register[key] = 1
-    for newkey in boxes[key]:
-        if newkey < len(register) and register[newkey] != 1:
-            boxChecking(boxes, newkey, register)
+    if key < len(register):
+        register[key] = 1
+        for newkey in boxes[key]:
+            if newkey < len(register) and register[newkey] != 1:
+                boxChecking(boxes, newkey, register)
