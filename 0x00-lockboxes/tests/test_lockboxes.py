@@ -99,3 +99,7 @@ class TestLockBoxes(unittest.TestCase):
     def test_emptybox(self):
         boxes = []
         self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_nproblem(self):
+        boxes = [[1000000, 90000000, 0, 0, 1], []]
+        self.assertEqual(canUnlockAll(boxes), True)
