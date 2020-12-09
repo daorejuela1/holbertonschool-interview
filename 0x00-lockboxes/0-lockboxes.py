@@ -33,7 +33,7 @@ def boxChecking(boxes, key, register):
     Returns:
     True if all boxes can be opened, otherwise False
     """
-    if key < len(register):
+    if key < len(register) and register[key] != 1:
         register[key] = 1
         for newkey in boxes[key]:
             if newkey < len(register) and register[newkey] != 1:
