@@ -36,5 +36,4 @@ def boxChecking(boxes, key, register):
     if key < len(register) and register[key] != 1:
         register[key] = 1
         for newkey in boxes[key]:
-            if newkey < len(register) and register[newkey] != 1:
-                boxChecking(boxes, newkey, register)
+            boxChecking(boxes, newkey, register)
