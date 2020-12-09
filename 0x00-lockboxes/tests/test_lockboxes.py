@@ -96,10 +96,14 @@ class TestLockBoxes(unittest.TestCase):
         boxes = [[4], [],[],[],[0, 1, 2, 3, 4]]
         self.assertEqual(canUnlockAll(boxes), True)
 
-    def test_emptybox(self):
-        boxes = []
-        self.assertEqual(canUnlockAll(boxes), True)
-
     def test_nproblem(self):
         boxes = [[1000000, 90000000, 0, 0, 1], []]
+        self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_ylockboxes(self):
+        boxes = [[1, 3], [2, 2, 2, 2, 2, 2, 2, 2], [0], [4]]
+        self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_butone(self):
+        boxes = [[1], [2, 3], [], [4], [4]]
         self.assertEqual(canUnlockAll(boxes), True)
