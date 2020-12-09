@@ -67,3 +67,11 @@ class TestLockBoxes(unittest.TestCase):
     def test_weirdkey(self):
         boxes = [[0, 1, 2], [0, 1, 2, 3, 8], [0, 1, 2, 3, 4], [0], []]
         self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_weirdkey1(self):
+        boxes = [[0, 0, 0, 1], [1, 1, 2, 1, 8], [2, 2, 2, 3, 20], [0, 0, 0, 0, 4], []]
+        self.assertEqual(canUnlockAll(boxes), True)
+
+    def test_weirdkey2(self):
+        boxes = [[4, 0, 0, 5], [8, 1, 3, 1, 8], [2, 2, 2, 3, 20], [0, 0, 0, 0, 4], [1, 8, 9, 7]]
+        self.assertEqual(canUnlockAll(boxes), False)
