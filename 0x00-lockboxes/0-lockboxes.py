@@ -15,27 +15,11 @@ def canUnlockAll(boxes):
     True if all boxes can be opened, otherwise False
     """
     register = set()
-    boxChecking(boxes, 0, register)
+    register.add(0)
+    for box in register:
+        for key in boxes[box]:
+            if key < len(boxes) and key not in register:
+                register.add(key)
     if len(register) == len(boxes):
         return True
     return False
-
-
-def boxChecking(boxes, key, register):
-    """
-    Opens a box and asks if the boxes are already opened
-
-    Args:
-    boxes (list of list): List of boxes that contains the list of keys.
-    key: number of the box to be opened.
-    register: list of boxes opened
-
-    Returns:
-    True if all boxes can be opened, otherwise False
-    """
-    if key < len(boxes) and key not in register:
-        register.add(key)
-    else:
-        return
-    for newkey in boxes[key]:
-        boxChecking(boxes, newkey, register)
