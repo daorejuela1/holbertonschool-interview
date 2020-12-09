@@ -35,11 +35,12 @@ def boxChecking(boxes, key, register):
     Returns:
     True if all boxes can be opened, otherwise False
     """
-    if register[key] == 0:
-        register[key] = 1
-        if all(register[x] for x in boxes[key] if x < len(register)):
-            if all(register):
-                return True
-        for newkey in boxes[key]:
-            if newkey < len(register) and register[newkey] != 1:
-                boxChecking(boxes, newkey, register)
+    register[key] = 1
+    if all(register[x] for x in boxes[key] if x < len(register)):
+        if all(register):
+            return True
+    for newkey in boxes[key]:
+        if type(newkey) != int:
+            continue
+        if newkey < len(register) and register[newkey] != 1:
+            boxChecking(boxes, newkey, register)
