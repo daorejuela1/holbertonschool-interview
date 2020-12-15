@@ -2,7 +2,7 @@
 /**
  * insert_node - inserts the node in a sorted linked list
  * @head: pointer to start of the linked list
- * @number: integer to be included 
+ * @number: integer to be included
  *
  * Return: the address of the new node or NULL if failed
  */
