@@ -10,7 +10,7 @@ heap_t *recursive_insert(heap_t *root, heap_t *new_node);
 heap_t *heap_insert(heap_t **root, int value)
 {
 	heap_t *new_node = NULL, *actual_node = NULL;
-	list_t *queue = NULL;
+	list_t *queue = NULL, *actual_queue;
 
 	if (!root)
 		return (NULL);
@@ -25,8 +25,10 @@ heap_t *heap_insert(heap_t **root, int value)
 	enqueue(&queue, *root);
 	while (queue)
 	{
-		actual_node = dequeue(&queue);
+		actual_queue = dequeue(&queue);
+		actual_node = actual_queue->node;
 		new_node->parent = actual_node;
+		free(actual_queue);
 		if (!actual_node->left)
 		{
 			actual_node->left = new_node;
@@ -51,6 +53,7 @@ heap_t *heap_insert(heap_t **root, int value)
 			enqueue(&queue, actual_node->right);
 		}
 	}
+	free_queue(queue);
 	return (new_node);
 }
 
@@ -66,11 +69,15 @@ void enqueue(list_t **queue, heap_t *new_node)
 	if (!(*queue))
 	{
 		*queue = malloc(sizeof(list_t));
+		if (!(*queue))
+			return;
 		(*queue)->node = new_node;
 		(*queue)->next = NULL;
 		return;
 	}
 	new_queue = malloc(sizeof(list_t));
+	if (!new_queue)
+		return;
 	new_queue->next = NULL;
 	new_queue->node = new_node;
 	temporal = *queue;
@@ -85,13 +92,13 @@ void enqueue(list_t **queue, heap_t *new_node)
  *
  * Return: Null or the first node of the queue
  */
-heap_t *dequeue(list_t **queue)
+list_t *dequeue(list_t **queue)
 {
 	list_t *temporal = NULL;
 
 	temporal = *queue;
 	*queue = (*queue)->next;
-	return (temporal->node);
+	return (temporal);
 }
 
 /**
@@ -128,6 +135,29 @@ void swap(heap_t *node, heap_t *parent)
 			node->left->parent = node;
 	}
 	parent->left = left_temp;
+	if (parent->left)
+		parent->left->parent = parent;
 	parent->right = right_temp;
+	if (parent->right)
+		parent->right->parent = parent;
 	parent->parent = node;
+}
+
+/**
+ * free_queue - free the remainings mallocs in the que
+ * @head: queue pointer
+ *
+ * Return: Null or the first node of the queue
+ */
+void free_queue(list_t *head)
+{
+	int i = 0;
+	void *tmp = NULL;
+
+	for (i = 0; head != NULL; i++)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
 }

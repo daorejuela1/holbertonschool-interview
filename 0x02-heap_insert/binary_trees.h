@@ -35,6 +35,7 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 void binary_tree_print(const binary_tree_t *);
 heap_t *heap_insert(heap_t **root, int value);
 void enqueue(list_t **queue, heap_t *new_node);
-heap_t *dequeue(list_t **queue);
+list_t *dequeue(list_t **queue);
 void swap(heap_t *node_a, heap_t *node_b);
+void free_queue(list_t *head);
 #endif
