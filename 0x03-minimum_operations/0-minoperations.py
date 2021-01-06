@@ -60,4 +60,6 @@ def minOperations(n):
         elif ((len(text) < n) and n % (len(text)) == 0):
             copy_buffer = copy_all(text)
         text = paste(text, copy_buffer)
+        if (len(text) > n):
+            return (0)
     return (counter)
