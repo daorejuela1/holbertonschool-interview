@@ -55,7 +55,6 @@ def minOperations(n):
     if (type(n) != int or n <= 0):
         return (0)
     while (len(text) != n):
-        print(text)
         if (len(text) == 1):
             copy_buffer = copy_all(text)
         elif ((len(text) < n) and n % (len(text)) == 0):
