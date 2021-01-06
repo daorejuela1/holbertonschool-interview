@@ -11,26 +11,25 @@ def copy_all(text):
     """ Copies the input string
 
     Args:
-        text (string): text to copy
+        text (int): text to copy len
 
     Returns:
-        text (string): copied text
+        text (int): copied text len
     """
     global counter
-    copy = text[:]
     counter += 1
-    return (copy)
+    return (text)
 
 
 def paste(text, copy):
     """ Paste copy into text
 
     Args:
-        text (string): original text
-        copy (string): copy text
+        text (int): original text len
+        copy (int): copy text len
 
     Returns:
-        text (string): text with copy pasted
+        text (int): text with copy pasted
     """
     global counter
     counter += 1
@@ -50,14 +49,12 @@ def minOperations(n):
     """
     global counter
     counter = 0
-    text = "H"
+    text_len = 1
     copy_buffer = ""
     if (type(n) != int or n <= 0):
         return (0)
-    while (len(text) != n):
-        if (n % (len(text)) == 0):
-            copy_buffer = copy_all(text)
-        text = paste(text, copy_buffer)
-        if (len(text) > n):
-            return (0)
+    while (text_len != n):
+        if (n % (text_len) == 0):
+            copy_buffer = copy_all(text_len)
+        text_len = paste(text_len, copy_buffer)
     return (counter)
