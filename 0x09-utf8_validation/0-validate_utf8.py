@@ -21,6 +21,7 @@ def validUTF8(data):
     for num in data:
         mask = 1 << 7
         if bytes_num == 0:
+            # If byte is not in chain dont ask for confirmation bytes
             while mask & num:
                 bytes_num += 1
                 mask = mask >> 1
@@ -29,7 +30,8 @@ def validUTF8(data):
             elif bytes_num == 1 or bytes_num > 4:
                 return False
         else:
+            # If byte doesnt start with 10 return false
             if not (num & 1 << 7 and not (num & 1 << 6)):
                 return False
         bytes_num -= 1
-    return bytes_num == 0
+    return True
