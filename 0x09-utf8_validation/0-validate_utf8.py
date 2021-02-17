@@ -34,4 +34,6 @@ def validUTF8(data):
             if not (num & 1 << 7 and not (num & 1 << 6)):
                 return False
         bytes_num -= 1
-    return True
+    if bytes_num == 0:
+        return True
+    return False
