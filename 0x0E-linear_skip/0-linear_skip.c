@@ -51,15 +51,25 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		print_between(tmp->index, list->index);
 		for (i = tmp->index; i < list->index; i++)
 		{
+			print_index(tmp->index, tmp->n);
 			if (value == tmp->n)
 				return (tmp);
 			tmp = tmp->next;
 		}
 	}
-	while (value >= list->n && list->next)
+	if (value >= list->n)
 	{
-		if (value == list->n)
-			return (list);
+		tmp = list;
+		while (tmp->next)
+			tmp = tmp->next;
+		print_between(list->index, tmp->index);
+		while (list && value >= list->n)
+		{
+			print_index(list->index, list->n);
+			if (value == list->n)
+				return (list);
+			list = list->next;
+		}
 	}
 	return (NULL);
 }
