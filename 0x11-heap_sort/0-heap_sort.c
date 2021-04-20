@@ -21,6 +21,7 @@ static void swap(int **array, size_t a, size_t b, size_t size)
  * @array: array to iterate with
  * @n: len of the array
  * @root: root index of the heap
+ * @size: size of the original array to print
  */
 static void heapify(int *array, size_t n, size_t root, size_t size)
 {
