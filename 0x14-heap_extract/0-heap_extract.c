@@ -40,7 +40,7 @@ static void heapify(binary_tree_t *root)
  */
 static int get_size(heap_t *root)
 {
-	return (root ? 1 + get_size(root->left) + get_size(root->right): 0);
+	return (root ? 1 + get_size(root->left) + get_size(root->right) : 0);
 }
 
 /**
