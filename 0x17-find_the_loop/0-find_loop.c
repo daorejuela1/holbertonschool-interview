@@ -8,7 +8,7 @@ listint_t *find_listint_loop(listint_t *head)
 {
 	listint_t *tortoise, *haar;
 
-	if (!head)
+	if (!head || !head->next)
 		return (NULL);
 	tortoise = head->next;
 	haar = head->next->next;
