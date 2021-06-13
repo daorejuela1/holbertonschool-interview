@@ -49,7 +49,7 @@ void merge_sort(int *array, size_t size)
 	int *copy = NULL;
 	int *end = array + size;
 
-	if (copy && size > 1)
+	if (array && size > 1)
 	{
 		copy = malloc(sizeof(*copy) * size);
 		if (!copy)
