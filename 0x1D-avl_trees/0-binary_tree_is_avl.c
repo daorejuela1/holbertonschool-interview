@@ -24,7 +24,7 @@ static int countpa(int countLeft, int countRight, const binary_tree_t *tree)
  * @tree: Pointer to the node to measures the height
  * Return: The height of the tree starting at @node
  */
-int _height(const binary_tree_t *tree)
+static int _height(const binary_tree_t *tree)
 {
 	int countLeft = 0, countRight = 0;
 
@@ -59,7 +59,7 @@ static int helper(const binary_tree_t *tree, int min, int max)
 static int binary_tree_is_bst(const binary_tree_t *tree)
 {
 	if (!tree)
-		return (0);
+		return (1);
 	return (helper(tree, INT_MIN, INT_MAX));
 }
 
@@ -70,11 +70,14 @@ static int binary_tree_is_bst(const binary_tree_t *tree)
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
+	int height_difference = 0;
+
 	if (!tree)
 		return (0);
+	height_difference = _height(tree->right) - _height(tree->left);
 	if (binary_tree_is_bst(tree))
 	{
-		if (ABS(_height(tree->right) - _height(tree->left)) >= 2)
+		if (height_difference >= 2 || height_difference <= -2)
 		{
 			return (0);
 		}

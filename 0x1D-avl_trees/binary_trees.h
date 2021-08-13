@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <stddef.h>
 
-#define ABS(x) ((x) < 0 ? -(x) : (x))
 /**
  * struct binary_tree_s - Binary tree node
  *
