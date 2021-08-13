@@ -77,7 +77,7 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	height_difference = _height(tree->right) - _height(tree->left);
 	if (binary_tree_is_bst(tree))
 	{
-		if (height_difference >= 2 || height_difference <= -2)
+		if (height_difference >= 1 || height_difference <= -1)
 		{
 			return (0);
 		}
