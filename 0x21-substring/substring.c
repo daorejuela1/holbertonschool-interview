@@ -40,13 +40,13 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 	if (!s || !words || !(*words) || !nb_words)
 		return (NULL);
 
+	str_len = strlen(s);
 	results = calloc(str_len, sizeof(int));
 	found = calloc(nb_words, sizeof(int));
 	if (!found || !results)
 		return (NULL);
 
 	*n = 0;
-	str_len = strlen(s);
 	word_len = strlen(words[0]);
 	concat_len = nb_words * word_len;
 
