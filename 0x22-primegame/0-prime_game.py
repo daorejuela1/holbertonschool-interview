@@ -8,7 +8,9 @@ The player that cannot make a move loses the game.
 
 
 def isWinner(x, nums):
-    """ Detects the winner in the Prime Game"""
+    """ 
+    Detects the winner in the Prime Game
+    """
     if x <= 0 or not nums:
         return None
 
