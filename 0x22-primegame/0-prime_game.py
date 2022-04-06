@@ -28,7 +28,8 @@ def isWinner(x, nums):
         deck[i] = c
 
     player1 = 0
-    [player1 += deck[n] % 2 == 1 for n in nums]
+    for n in nums:
+        player1 += deck[n] % 2 == 1
     if player1 * 2 > len(nums):
         return "Maria"
     if player1 * 2 == len(nums):
